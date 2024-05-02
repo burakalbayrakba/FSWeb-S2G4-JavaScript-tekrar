@@ -50,8 +50,10 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(yaricap) {
+  let cevre = 2 * pi * yaricap;
+
+  return cevre;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -64,8 +66,10 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(yaricap, pi) {
+  let alan = pi * Math.pow(yaricap, 2);
+
+  return alan;
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -99,27 +103,59 @@ let ucetambolunenler,
 
 // 3a çözümü
 
-/* kodlar buraya */
+ enkucuk = sayilar[0]; // en küçük değeri ilk önce dizinin ilk elemanına atıyoruz
+ enbuyuk = sayilar[0]; // en büyük değeri de ilk önce dizinin ilk elemanına atıyoruz
+
+for (let i = 1; i < sayilar.length; i++) {
+    if (sayilar[i] < enkucuk) {
+        enkucuk = sayilar[i]; // eğer dizinin i. elemanı şu anki en küçük değerden küçükse, yeni en küçük değeri olarak atıyoruz
+    }
+    if (sayilar[i] > enbuyuk) {
+        enbuyuk = sayilar[i]; // eğer dizinin i. elemanı şu anki en büyük değerden büyükse, yeni en büyük değeri olarak atıyoruz
+    }
+}
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ ucetambolunenler = [];
+
+sayilar.forEach(sayi => {
+    if (sayi % 3 === 0) {
+        ucetambolunenler.push(sayi); // eğer sayı 3'e tam bölünüyorsa, dizinin sonuna ekliyoruz
+    }
+});
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ ucebolunenlerintoplami = ucetambolunenler.reduce((acc, curr) => acc + curr, 0);
 
 // 3d çözümü
 
-/* kodlar buraya */
+ besyuzdenkucuksayilar = sayilar.filter(sayi => sayi < 500);
 
 // 3e çözümü
 
-/* kodlar buraya */
+ siralisayilar = besyuzdenkucuksayilar.sort((a, b) => a - b);
 
 // 3f çözümü
 
-/* kodlar buraya */
+ tekraredensayilar = []; 
+
+ let sayiFrekanslari = []; // Her sayının kaç kere tekrar edildiğini saklayacak nesne
+
+sayilar.forEach(sayi => {
+    if (sayi in sayiFrekanslari) {
+        sayiFrekanslari[sayi]++;
+    } else {
+        sayiFrekanslari[sayi] = 1;
+    }
+});
+
+for (let sayi in sayiFrekanslari) {
+    if (sayiFrekanslari[sayi] > 1) {
+        tekraredensayilar.push(`${sayi} sayısı ${sayiFrekanslari[sayi]} kere tekrar edilmiştir`);
+    }
+}
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
